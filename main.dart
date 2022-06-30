@@ -7,7 +7,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: HomePage(),
-        debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
       ),
     );
@@ -59,6 +59,12 @@ class _HomePageState extends State<HomePage> {
           key: _formKey,
           child: Column(
             children: <Widget>[
+              Image.network(
+                'https://i.ibb.co/ZzCVW80/gabiogol.jpg',
+                width: 200,
+                height: 300,
+                //fit: BoxFit.fitHeight,
+              ),
               SizedBox( height: 2),
 
               ElevatedButton(
@@ -88,16 +94,22 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: const Color(0xFFF4DE9C),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.add_alert, size: 40,),
-            label: ''
+              icon: Icon(Icons.add_alert, size: 40,),
+              label: ''
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.camera, size: 40,),
-            label: 'Camera',
+            label: '',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.chat, size: 40,),
-            label: 'Chats',
+            label: '',
+            Image.network(
+              'https://i.ibb.co/ZzCVW80/gabiogol.jpg',
+              width: 5,
+              height: 5,
+              //fit: BoxFit.fitHeight,
+            ),
           ),
           //currentIndex: _selectedIndex, //New
           //onTap: _onItemTapped,
