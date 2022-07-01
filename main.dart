@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 void main() => runApp(MyApp());
 int _selectedIndex = 0; //New
 
@@ -14,14 +15,39 @@ class MyApp extends StatelessWidget {
   }
 }
 
+
+/*class NewPageScreen extends StatelessWidget { //classe para a mudança de página ao clicar o botao do BottomNavigationBar
+  final String texto;
+
+  NewPageScreen(this.texto);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Center(
+        child: Text(texto),
+      ),
+    );
+  }
+}*/
+
+
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
 
+
 class _HomePageState extends State<HomePage> {
   var _formKey = GlobalKey<FormState>();
   var isLoading = false;
+
+  int _indiceAtual = 0;
+  final List<Widget> _telas = [
+    //NewPageScreen("Meus pedidos"),
+    //NewPageScreen("teste 2"),
+    //NewPageScreen("Favoritos")
+  ];
 
   void _submit() {
     final isValid = _formKey.currentState?.validate();
@@ -33,16 +59,19 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: const Color(0xFFF25305),
+      //onTap: onTabTapped,
       appBar: AppBar(
-        leading: Icon(Icons.arrow_back_sharp, color: Color(0xFF571F04), size: 45),
+        leading: Icon(
+            Icons.arrow_back_sharp, color: Color(0xFF571F04), size: 45),
 
         backgroundColor: const Color(0xFFF4DE9C),
         toolbarHeight: 120,
 
-        title:Text("GALIF", style: TextStyle(fontSize: 32.0,fontWeight: FontWeight.bold, color: Color(0xFF571F04),),),
+        title: Text("GALIF", style: TextStyle(fontSize: 32.0,
+          fontWeight: FontWeight.bold,
+          color: Color(0xFF571F04),),),
 
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
@@ -50,7 +79,6 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      //body
 
       body: Padding(
         padding: const EdgeInsets.all(30.0),
@@ -65,7 +93,7 @@ class _HomePageState extends State<HomePage> {
                 height: 300,
                 //fit: BoxFit.fitHeight,
               ),
-              SizedBox( height: 2),
+              SizedBox(height: 2),
 
               ElevatedButton(
                 onPressed: onPressedButton,
@@ -88,39 +116,40 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
+
+
       bottomNavigationBar: BottomNavigationBar(
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        backgroundColor: const Color(0xFFF4DE9C),
-        items: const <BottomNavigationBarItem>[
+        showSelectedLabels: false, //retirar label
+        showUnselectedLabels: false, //retirar label ao ser selecionada
+        backgroundColor: const Color(0xFFF4DE9C), //cor da barra do BottomNavigationBar
+        currentIndex: _indiceAtual,
+        onTap: onTabTapped, //ação ao clicar no icone
+        items: [
           BottomNavigationBarItem(
-              icon: Icon(Icons.add_alert, size: 40,),
-              label: ''
+              icon: Icon(Icons.add_alert, size: 40),
+              label: "Minha conta"
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.camera, size: 40,),
-            label: '',
+              icon: Icon(Icons.warehouse_outlined, size: 40),
+              label:"Meus pedidos"
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.chat, size: 40,),
-            label: '',
-            Image.network(
-              'https://i.ibb.co/ZzCVW80/gabiogol.jpg',
-              width: 5,
-              height: 5,
-              //fit: BoxFit.fitHeight,
-            ),
+              icon: Icon(Icons.person, size: 40),
+              label: "Favoritos"
           ),
-          //currentIndex: _selectedIndex, //New
-          //onTap: _onItemTapped,
         ],
       ),
     );
   }
-  void onPressedButton() { }
-  void _onItemTapped(int index) {
+
+
+  void onTabTapped(int index) { //colocar a ação que será feita ao clicar nos botões
     setState(() {
-      _selectedIndex = index;
+      _indiceAtual = index;
     });
   }
+
+
+  void onPressedButton() {}
+
 }
