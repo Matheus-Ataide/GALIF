@@ -1,0 +1,21 @@
+bottomNavigationBar: BottomNavigationBar(
+        showSelectedLabels: false, //retirar label
+        showUnselectedLabels: false, //retirar label ao ser selecionada
+        backgroundColor: const Color(0xFFF4DE9C), //cor da barra do BottomNavigationBar
+        currentIndex: _indiceAtual,
+        onTap: onTabTapped, //ação ao clicar no icone
+        items: [
+          BottomNavigationBarItem(
+              icon: Icon(Icons.add_alert, size: 40),
+              label: "Minha conta"
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.warehouse_outlined, size: 40),
+              label:"Meus pedidos"
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.person, size: 40),
+              label: "Favoritos"
+          ),
+        ],
+      ),
