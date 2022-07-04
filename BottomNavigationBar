@@ -1,3 +1,14 @@
+class _HomePageState extends State<HomePage> {
+  var _formKey = GlobalKey<FormState>();
+
+  int _indiceAtual = 1;
+  final List<Widget> _telas = [
+    //NewPageScreen("Meus pedidos"),
+    //NewPageScreen("teste 2"),
+    //NewPageScreen("Favoritos")
+  ];
+  
+
 bottomNavigationBar: BottomNavigationBar(
         showSelectedLabels: false, //retirar label
         showUnselectedLabels: false, //retirar label ao ser selecionada
