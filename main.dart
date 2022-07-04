@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
   final String texto;
 
   NewPageScreen(this.texto);
-
+  
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -42,20 +42,12 @@ class _HomePageState extends State<HomePage> {
   var _formKey = GlobalKey<FormState>();
   var isLoading = false;
 
-  int _indiceAtual = 0;
-  final List<Widget> _telas = [
+  int _indiceAtual = 1; //bottomNavigation / Contador
+  final List<Widget> _telas = [//bottomNavigation
     //NewPageScreen("Meus pedidos"),
     //NewPageScreen("teste 2"),
     //NewPageScreen("Favoritos")
-  ];
-
-  void _submit() {
-    final isValid = _formKey.currentState?.validate();
-    if (!isValid!) {
-      return;
-    }
-    _formKey.currentState?.save();
-  }
+  ]; //bottomNavigation
 
   @override
   Widget build(BuildContext context) {
@@ -93,7 +85,9 @@ class _HomePageState extends State<HomePage> {
                 height: 300,
                 //fit: BoxFit.fitHeight,
               ),
+
               SizedBox(height: 2),
+
 
               ElevatedButton(
                 onPressed: onPressedButton,
